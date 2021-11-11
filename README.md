@@ -3,7 +3,7 @@ try to create one unmanned underwater vehicle from nothing
 ----
 ## Part One: Travelling Control System
 Hardware|Control MCU|Core Board|PC
---|:--:|--:|
+--|:--:|:--:|--:|
 Chip Type|STM32F407|Jetson nano|
 CPU| | |
 Frequency| | |
