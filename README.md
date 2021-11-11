@@ -12,8 +12,10 @@ OS| | |
 #### Peripherals on STM32
 name|connection|aim|
 --|:--:|--:
-XX| |
-XX| |
+deepth sensor|I2C|
+gesture sensor|USART|
+servo motor|PWM|
+propeller|PWM|
 #### Peripherals on nano
 name|connection|aim|
 --|:--:|--:
