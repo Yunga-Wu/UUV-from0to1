@@ -13,10 +13,10 @@ OS| | |
 ### Peripherals on STM32
 name|connection|aim|
 --|:--:|--:
-  | |
-  | |
+ XX| |
+ XX| |
  ### Peripherals on nano
 name|connection|aim|
 --|:--:|--:
-  | |
-  | |
+ XX| |
+ XX| |
