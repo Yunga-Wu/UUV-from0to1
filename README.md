@@ -9,5 +9,6 @@ CPU| |
 Frequency| |
 RAM| |
 Memory| |
-Peripheral| |
 OS| |
+### Peripherals on STM32
+--|:--:|--:
