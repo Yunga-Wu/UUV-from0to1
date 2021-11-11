@@ -21,7 +21,7 @@ name|connection|aim|
 --|:--:|--:
 XX| |
 XX| |
-### Software
+### Software  
 
 ## Part Two: Mechanical Structure
 ### to do
