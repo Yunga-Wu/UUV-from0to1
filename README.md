@@ -1,6 +1,4 @@
 # UUV-from0to1
-try to create one unmanned underwater vehicle from nothing
-----
 ## Part One: Travelling Control System
 ### Hardware
 Hardware|Control MCU|Core Board|PC
