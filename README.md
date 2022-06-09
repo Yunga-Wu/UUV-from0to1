@@ -25,3 +25,9 @@ XX| |
 ###
 ## Part Two: Mechanical Structure
 ### to do
+所需硬件：
+1.PC + QGroundControl地面站
+2.遥控手柄
+3.上位机 Jetson nano
+4.ZED2 双目相机
+5. Pixhawk + ArduSub 飞控
