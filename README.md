@@ -12,5 +12,6 @@
 - 推进器需要运行相应的初始化程序
 ### 1_AUVControl_pcb
 - 底层PCB文档，用立创EDA打开编辑，底层控制芯片采用STM32F407VET6  
-![image](https://github.com/Yunga-Wu/UUV-from0to1/blob/main/img/PCB.jpg)
+
+![image](https://github.com/Yunga-Wu/UUV-from0to1/blob/main/img/pcb.jpg)
 
