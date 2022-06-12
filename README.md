@@ -8,9 +8,9 @@
 
 ## 文件说明
 ### 0_Firmware_F407 V0.1(FreeRTOS)
-- keil程序，解算DMP数据得到姿态角，并实现姿态PID控制
+- keil程序，用PS2下发航行控制指令，通过解算DMP数据得到当前姿态角，实现PID姿态控制
+- 推进器需要运行相应的初始化程序
 ### 1_AUVControl_pcb
 - 底层PCB文档，用立创EDA打开编辑，底层控制芯片采用STM32F407VET6  
-
 ![image](https://github.com/Yunga-Wu/UUV-from0to1/blob/main/img/PCB.jpg)
 
