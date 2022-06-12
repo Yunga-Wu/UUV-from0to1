@@ -1,27 +1,6 @@
 # UUV-from0to1
-## Part One: Travelling Control System
-### Hardware
-Hardware|Control MCU|Core Board|PC
---|:--:|:--:|--:|
-Chip Type|STM32F407|Jetson nano|
-CPU| | |
-Frequency| | |
-RAM| | |
-Memory| | |
-OS| | |
-#### Peripherals on STM32
-name|connection|aim|
---|:--:|--:
-deepth sensor|I2C|
-gesture sensor|USART|
-servo motor|PWM|
-propeller|PWM|
-#### Peripherals on nano
-name|connection|aim|
---|:--:|--:
-XX| |
-XX| |
-### Software  
-###
-## Part Two: Mechanical Structure
-### to do
+
+## 0_Firmware_F407 V0.1(FreeRTOS)
+### keil程序，解算DMP数据得到姿态角，并实现姿态PID控制
+## 1_AUVControl_pcb
+### 底层PCB文档，用立创EDA打开编辑，底层控制芯片采用STM32F407VET6
