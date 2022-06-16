@@ -56,4 +56,7 @@
 - 接收数据：协议头、设置航向角、设置纵倾角、航向角PID参数、纵倾角PID参数
 
 ### Jetson nano
-- 
+
+
+## Reference
+- [Huanyu Forum](http://huanyu-robot.uicp.hk/)
