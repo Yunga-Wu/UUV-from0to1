@@ -113,7 +113,17 @@
 - 打开可视化调节界面：`rosrun rqt_reconfigure rqt_reconfigure`
 #### 读取机器人传感器数据和发布控制指令
 - 文件：Huanyu_robot.cpp
-
+- 里程计原理：对IMU的速度和角速度积分，得到位移和航向角
+- 里程计代码：
+   ```
+   double delta_x = (vx * cos(th) - vy * sin(th)) * dt;
+   double delta_y = (vx * sin(th) - vy * cos(th)) * dt;
+   double delta_th = vth * dt;
+   x += delta_x;
+   y += delta_y;
+   th += delta_th;
+   ```
+- 好
 #### 双目深度相机使用
 
 ## Reference
