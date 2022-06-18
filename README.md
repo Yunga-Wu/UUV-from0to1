@@ -58,12 +58,21 @@
 
 ### 2.Raspberry pi
 #### 环境准备操作
-- 已将树莓派系统备份，可以作为镜像使用
 - 烧写系统步骤：
-   - SD卡选型： 树莓派3B要求大于16G，树莓派4B要求大于32G，Jetson nano要求大于32G
-   - SD卡格式化：SD Card Formatter
-   - 烧写：Win32Diskimager.exe 或者 balenaEtcher.exe
-- 备份系统：[PDF]()
+   1. SD卡选型： 树莓派3B要求大于16G，树莓派4B要求大于32G，Jetson nano要求大于32G
+   2. SD卡格式化：SD Card Formatter
+   3. 烧写：Win32Diskimager.exe 或者 balenaEtcher.exe
+- 备份系统：
+   1. 将插入SD的读卡器插入树莓派，并确认产生/dev/sda或/dev/sdc设备节点
+   2. 运行系统备份脚本（脚本路径: /home/huike/backup.sh）：
+      ```
+      cd /home/huike/
+      ./backup.sh
+      ```
+      - 不要采用远程登录的方式，由于拷贝时间过长，中端断开意味着进程结束
+      - 确保用普通用户权限执行，sudo会产生系统拷贝出错
+   3. 中端输出: All done. You can un-plug the backup device，拷贝成功!
+   4. 备份结束后，会在SD卡产生树莓派的系统镜像，拷贝到windows后即可烧写系统进行刷机操作
 - 树莓派系统ID：huike 密码： huike
 - 固定IP： 192.168.12.1
 - 局域网： Huanyu-111, 密码：12345678
