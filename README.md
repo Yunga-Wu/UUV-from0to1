@@ -28,12 +28,12 @@
 - keil程序，用PS2下发航行控制指令，通过解算DMP数据得到当前姿态角，实现PID姿态控制
 - 推进器需要运行相应的初始化程序
 
-### Raspi
+### raspi
 - Raspberry pi的ROS功能包
 - 实现功能：
 
 ## 调试日志
-### stm32
+### 1.stm32
 #### 程序线程
 - 考虑稳定性和防止程序臃肿，没有用到FreeRTOS
 - 用看门狗实现程序稳定运行，在中断中循环喂狗
@@ -56,10 +56,15 @@
 - 上传数据协议：协议头、设置航向角、设置纵倾角、当前航向角、当前纵倾角、电池电压、航向角PID参数、纵倾角PID参数、协议尾
 - 接收数据：协议头、设置航向角、设置纵倾角、航向角PID参数、纵倾角PID参数
 
-### Raspberry pi
+### 2.Raspberry pi
 #### 环境准备操作
 - 已将树莓派系统备份，可以作为镜像使用
-- 树莓派登录ID：huike 密码： huike
+- 烧写系统步骤：
+   - SD卡选型： 树莓派3B要求大于16G，树莓派4B要求大于32G，Jetson nano要求大于32G
+   - SD卡格式化：SD Card Formatter
+   - 烧写：Win32Diskimager.exe 或者 balenaEtcher.exe
+- 备份系统：[PDF]()
+- 树莓派系统ID：huike 密码： huike
 - 固定IP： 192.168.12.1
 - 局域网： Huanyu-111, 密码：12345678
 - 配置局域网：`subl .bashrc`
