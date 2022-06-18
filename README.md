@@ -126,7 +126,7 @@
 #### 双目深度相机使用
 - ROS功能包
    - 只获取彩色图像： huanyu_robot_start/launch/camera_image.launch
-      ```roslaunch huanyu_robot_start camera_image.launch
+      ```roslaunch huanyu_robot_start camera_image.launch```
    - 同时获取彩色和深度图像： astra_camera/ros_astra_launch/includes/astra.launch
       ```roslaunch ros_astra_launch astra.launch```
 #### 目标检测
