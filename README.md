@@ -61,12 +61,17 @@
 - 固定IP： 192.168.12.1
 - 局域网： Huanyu-111, 密码：12345678
 - 配置局域网： 修改bashrc文件中的ROS分布式IP  
-`subl .bashrc`
-
-```
-export ROS_MASTER_URI=http://192.168.12.1:11311
-export ROS_HOSTNAME=192.168.12.xx # turn this value to your PC's IP
-```
+ `subl .bashrc`
+ ```
+ export ROS_MASTER_URI=http://192.168.12.1:11311
+ export ROS_HOSTNAME=192.168.12.xx # turn this value to your PC's IP
+ ```
+- 如果没有键盘、鼠标和显示器，可以远程挂载树莓派：
+ - 重启远程挂载：
+ ```
+ sudo /etc/init.d/nfs-kernel-server restart
+ sudo mount nfs 192.168.12.1:/home/huanyu/robot_ws /mnt/
+ ```
 - 树莓派远程连接： ssh huike@192.168.12.1
 - 
 - ROS中调节PID参数  
