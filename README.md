@@ -31,6 +31,11 @@
 ### raspi
 - Raspberry pi的ROS功能包
 - 实现功能：
+   - 与地面站通信
+   - 读取机器人传感器数据
+   - PID参数可视化调节
+   - 控制指令下发
+   - 目标检测
 
 ## 调试日志
 ### 1.stm32
@@ -62,6 +67,11 @@
    1. SD卡选型： 树莓派3B要求大于16G，树莓派4B要求大于32G，Jetson nano要求大于32G
    2. SD卡格式化：SD Card Formatter
    3. 烧写：Win32Diskimager.exe 或者 balenaEtcher.exe
+   4. 树莓派刷入新系统镜像，空间只有刷入镜像大小，需要配置系统空间扩充到整个SD卡：
+      1. 打开新终端，输入： `sudo raspi-config`
+      2. 选择`Advanced Options`选项
+      3. 选择`Expand Fileststem`，回车，重启系统
+      4. 打开新终端，输入： `df -h`，查看扩容是否成功
 - 备份系统：
    1. 将插入SD的读卡器插入树莓派，并确认产生/dev/sda或/dev/sdc设备节点
    2. 运行系统备份脚本（脚本路径: /home/huike/backup.sh）：
@@ -71,7 +81,7 @@
       ```
       - 不要采用远程登录的方式，由于拷贝时间过长，中端断开意味着进程结束
       - 确保用普通用户权限执行，sudo会产生系统拷贝出错
-   3. 中端输出: All done. You can un-plug the backup device，拷贝成功!
+   3. 中端输出: `All done. You can un-plug the backup device`，说明备份成功!
    4. 备份结束后，会在SD卡产生树莓派的系统镜像，拷贝到windows后即可烧写系统进行刷机操作
 - 树莓派系统ID：huike 密码： huike
 - 固定IP： 192.168.12.1
@@ -86,16 +96,25 @@
    - 建立挂载： sudo mount nfs 192.168.12.1:/home/huanyu/robot_ws /mnt/
    - 取消挂载： sudo unmount /mnt
 - 树莓派远程连接： ssh huike@192.168.12.1
+- 设置网络
+   1. 打开新终端，输入： `vim /etc/rc.local`
+   2. 修改文件： `eth-enId Wifi_name Wifi_code &`
+   3. 保存推出，重启系统，OK
+#### 几个常用launch
+- 底盘: `roslaunch huanyu_robot_start Huanyu_robot_start.launch`
+- 手柄： `roslaunch huanyu_joy huanyu_ps2_control.launch`
 #### PID参数可视化调节
+- 所有电机共享一套PID参数
 - 相关文件：
    - pic.cfg
    - Huanyu_robot.cpp
    - Huanyu_robot.h
    - Huanyu_robot_start.launch
 - 打开可视化调节界面：`rosrun rqt_reconfigure rqt_reconfigure`
-#### 几个常用launch
-- 底盘: `roslaunch huanyu_robot_start Huanyu_robot_start.launch`
-- 手柄： `roslaunch huanyu_joy huanyu_ps2_control.launch`
+#### 读取机器人传感器数据和发布控制指令
+- 文件：Huanyu_robot.cpp
+
+#### 双目深度相机使用
 
 ## Reference
 - 【1】[Huanyu Forum](http://huanyu-robot.uicp.hk/)
