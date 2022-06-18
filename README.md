@@ -34,11 +34,15 @@
 
 ## 调试日志
 ### stm32
+#### 程序线程
+- 考虑稳定性和防止程序臃肿，没有用到FreeRTOS
+- 用看门狗实现程序稳定运行，在中断中循环喂狗
+#### 初始化程序
 - 初始化：中断优先级分组、延时函数、串口、MPU6050、LED、定时器（PWM）、PS2、PID控制器结构体、电机
 - 系统时钟频率8M
 - 采样频率50Hz
 - 中断优先级分组为2
-- 
+#### PWM波和控制指令
 - STM32的定时器只有1、2通道可以用作编码器模式，且此时定时器的其他通道只能用作普通IO口，不能复用
 - 定时器TIM3的1、2、3、4通道分别复用为垂直推进器、左水平推进器、右水平推进器、舵机的PWM输出
 - PWM自动重装载值20000-1，预分频系数84-1，PWM频率50Hz
@@ -47,34 +51,37 @@
 - 由于推进器没有编码器，只能用IMU数据做PID控制的反馈输入
 - 位置式PID
 - 用PS2手柄下发航向角和深度指令，AUV做出姿态响应
-- 
-- 考虑稳定性和防止程序臃肿，没有用到FreeRTOS
-- 用看门狗实现程序稳定运行，在中断中循环喂狗  
--
+#### 上传和接收数据
 - 发送数据在while主循环的SendToUbuntu()函数中，接收数据在串口中断中
 - 上传数据协议：协议头、设置航向角、设置纵倾角、当前航向角、当前纵倾角、电池电压、航向角PID参数、纵倾角PID参数、协议尾
 - 接收数据：协议头、设置航向角、设置纵倾角、航向角PID参数、纵倾角PID参数
 
 ### Raspberry pi
+#### 环境准备操作
 - 已将树莓派系统备份，可以作为镜像使用
 - 树莓派登录ID：huike 密码： huike
 - 固定IP： 192.168.12.1
 - 局域网： Huanyu-111, 密码：12345678
-- 配置局域网： 修改bashrc文件中的ROS分布式IP  
- `subl .bashrc`
- ```
- export ROS_MASTER_URI=http://192.168.12.1:11311
- export ROS_HOSTNAME=192.168.12.xx # turn this value to your PC's IP
- ```
+- 配置局域网：`subl .bashrc`
+   ```
+   export ROS_MASTER_URI=http://192.168.12.1:11311
+   export ROS_HOSTNAME=192.168.12.xx # turn this value to your PC's IP
+   ```
 - 如果没有键盘、鼠标和显示器，可以远程挂载树莓派：
- - 重启远程挂载：
- ```
- sudo /etc/init.d/nfs-kernel-server restart
- sudo mount nfs 192.168.12.1:/home/huanyu/robot_ws /mnt/
- ```
+   - 重启远程挂载： sudo /etc/init.d/nfs-kernel-server restart
+   - 建立挂载： sudo mount nfs 192.168.12.1:/home/huanyu/robot_ws /mnt/
+   - 取消挂载： sudo unmount /mnt
 - 树莓派远程连接： ssh huike@192.168.12.1
-- 
-- ROS中调节PID参数  
+#### PID参数可视化调节
+- 相关文件：
+   - pic.cfg
+   - Huanyu_robot.cpp
+   - Huanyu_robot.h
+   - Huanyu_robot_start.launch
+- 打开可视化调节界面：`rosrun rqt_reconfigure rqt_reconfigure`
+#### 几个常用launch
+- 底盘: `roslaunch huanyu_robot_start Huanyu_robot_start.launch`
+- 手柄： `roslaunch huanyu_joy huanyu_ps2_control.launch`
 
 ## Reference
-- [Huanyu Forum](http://huanyu-robot.uicp.hk/)
+- 【1】[Huanyu Forum](http://huanyu-robot.uicp.hk/)
