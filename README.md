@@ -123,7 +123,6 @@
    y += delta_y;
    th += delta_th;
    ```
-- 好
 #### 双目深度相机使用
 - ROS功能包
    - 只获取彩色图像： huanyu_robot_start/launch/camera_image.launch
@@ -132,7 +131,7 @@
       ```roslaunch ros_astra_launch astra.launch```
 #### 目标检测
 1. 启动彩色相机节点： `roslaunch huanyu_robot_start astra_rgb_ir_depth.launch`
-2. Darknet节点： `roslaunch darknet_ros darknet_ros.launch
+2. Darknet节点： `roslaunch darknet_ros darknet_ros.launch`
 3. rviz中加载image消息，选择/darknet_ros/detection_image话题，可以看到检测的结果
 #### 深度学习、神经网络相关功能
 - 敬请期待。。。
