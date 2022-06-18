@@ -4,7 +4,7 @@
 - 执行机构：左右艉部推进器、中部垂直推进器、稳定舵
 - 底层控制芯片用STM32F407VET6，实现对推进器转速和舵角的控制，最终控制机器人姿态
 - [推进器 ROVMakerT200](https://item.taobao.com/item.htm?spm=a1z10.3-c-s.w4002-24333018520.56.fd497b12fuX3O7&id=651658155786)，额定电压24V，最大功率300W，重200g，推力2Kgf
-- 上位机采用Jetson Nano，实现控制指令下发和环境图像数据采集、处理
+- 上位机采用树莓派，实现控制指令下发和环境图像数据采集、处理
 - 机器人搭载ZED2双目相机，可以实现目标识别、检测和slam等功能  
 
 ![image](https://github.com/Yunga-Wu/UUV-from0to1/blob/main/img/%E5%B0%8F%E5%9E%8BAUV%E8%A3%85%E9%85%8D%E5%9B%BE.jpg)
@@ -28,8 +28,8 @@
 - keil程序，用PS2下发航行控制指令，通过解算DMP数据得到当前姿态角，实现PID姿态控制
 - 推进器需要运行相应的初始化程序
 
-### nano
-- Jetson nano的ROS功能包
+### Raspi
+- Raspberry pi的ROS功能包
 - 实现功能：
 
 ## 调试日志
@@ -55,8 +55,21 @@
 - 上传数据协议：协议头、设置航向角、设置纵倾角、当前航向角、当前纵倾角、电池电压、航向角PID参数、纵倾角PID参数、协议尾
 - 接收数据：协议头、设置航向角、设置纵倾角、航向角PID参数、纵倾角PID参数
 
-### Jetson nano
+### Raspberry pi
+- 已将树莓派系统备份，可以作为镜像使用
+- 树莓派登录ID：huike 密码： huike
+- 固定IP： 192.168.12.1
+- 局域网： Huanyu-111, 密码：12345678
+- 配置局域网： 修改bashrc文件中的ROS分布式IP
+`subl .bashrc`
 
+```
+export ROS_MASTER_URI=http://192.168.12.1:11311
+export ROS_HOSTNAME=192.168.12.xx # turn this value to your PC's IP
+```
+- 树莓派远程连接： ssh huike@192.168.12.1
+- 
+- ROS中调节PID参数  
 
 ## Reference
 - [Huanyu Forum](http://huanyu-robot.uicp.hk/)
