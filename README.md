@@ -60,7 +60,7 @@
 - 树莓派登录ID：huike 密码： huike
 - 固定IP： 192.168.12.1
 - 局域网： Huanyu-111, 密码：12345678
-- 配置局域网： 修改bashrc文件中的ROS分布式IP
+- 配置局域网： 修改bashrc文件中的ROS分布式IP  
 `subl .bashrc`
 
 ```
