@@ -1,0 +1,12 @@
+<launch>
+  
+  <!-- 开机启自启节点可以在此添加 -->
+
+  <!-- 启动底盘 -->
+  <include file="$(find huanyu_robot_start)/launch/Huanyu_robot_start.launch">
+  </include>
+
+
+</launch>
+
+
